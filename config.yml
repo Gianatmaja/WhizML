@@ -1,0 +1,61 @@
+task:
+  eda: 
+  data_preprocessing: 
+  model_experimentation: 
+  model_finalization:
+  model_inference:
+  model_explainability:
+  bias_analysis_data_prep:
+  data_drift_analysis:
+data_path:
+  raw:
+  clean:
+  model_input:
+  additional_data1:
+  additional_data2:
+other_directories:
+  split:
+  model:
+  scaler:
+  encoder:
+  predictions:
+  reporting:
+  others:
+problem:
+  classification:
+    tag:
+    binary:
+    target:
+  regression:
+    tag:
+    target:
+  clustering:
+    tag:
+  exclude:
+preprocessing:
+  split_first:
+  drop:
+  impute_mean:
+  impute_median:
+  impute_mode:
+  impute_new:
+    col:
+    new_val:
+  drop_others:
+  cat_vars:
+    vars:
+    lab_encode:
+    one_encode:
+  num_vars:
+    vars:
+    scale:
+      required:
+      scaler:
+  exclude:
+wandb:
+  user:
+  project:
+  best_model_url:
+
+  
+
