@@ -64,4 +64,7 @@ if __name__ == '__main__':
         print(current_time_str, '\033[93mSTATUS\033[0m - Data saved to data/reporting/ directory.')
     
     else:
-        print('Bias analysis is only available for binary classification problems.')
+        current_time = datetime.now()
+        current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
+        
+        print(current_time_str, '\033[91mFAILED\033[0m - Bias analysis is only available for binary classification problems.')

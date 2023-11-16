@@ -77,6 +77,6 @@ if __name__ == '__main__':
         current_time = datetime.now()
         current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
         
-        print(current_time_str, '\033[93mSTATUS\033[0m - FAILED: Explainer dashboard is not available for this model type. Please select a different model.')
+        print(current_time_str, '\033[91mFAILED\033[0m - Explainer dashboard is not available for this model type. Please select a different model.')
 
     

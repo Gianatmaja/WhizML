@@ -184,7 +184,7 @@ class Experiments:
         X_test = df_test.drop(target, axis = 1)
         
         # Define hyperparameter values to try
-        grid_values = {'C': np.logspace(-4, 4, 9)}
+        grid_values = {'alpha': [0.01, 0.1, 1, 10]}
 
         # Define algorithm
         lr = Ridge(random_state = 1)
@@ -207,9 +207,9 @@ class Experiments:
                 rmse = mean_squared_error(y_test, y_pred_lr, squared = False)
                 
                 wandb.run.summary.update(params)
-                wandb.run.summary.update(r2)
-                wandb.run.summary.update(mae)
-                wandb.run.summary.update(rmse)
+                wandb.run.summary.update({'r_squared': r2})
+                wandb.run.summary.update({'mae': mae})
+                wandb.run.summary.update({'rmse': rmse})
         
         # Finish the WandB run
         wandb.finish()
@@ -258,9 +258,9 @@ class Experiments:
                 rmse = mean_squared_error(y_test, y_pred_rf, squared = False)
                 
                 wandb.run.summary.update(params)
-                wandb.run.summary.update(r2)
-                wandb.run.summary.update(mae)
-                wandb.run.summary.update(rmse)
+                wandb.run.summary.update({'r_squared': r2})
+                wandb.run.summary.update({'mae': mae})
+                wandb.run.summary.update({'rmse': rmse})
         
         # Finish the WandB run
         wandb.finish()
@@ -309,9 +309,9 @@ class Experiments:
                 rmse = mean_squared_error(y_test, y_pred_xgb, squared = False)
                 
                 wandb.run.summary.update(params)
-                wandb.run.summary.update(r2)
-                wandb.run.summary.update(mae)
-                wandb.run.summary.update(rmse)
+                wandb.run.summary.update({'r_squared': r2})
+                wandb.run.summary.update({'mae': mae})
+                wandb.run.summary.update({'rmse': rmse})
         
         
         # Finish the WandB run
