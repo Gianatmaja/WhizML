@@ -138,10 +138,10 @@ class Experiments:
         X_test = df_test.drop(target, axis = 1)
         
         # Define hyperparameter values to try
-        grid_values = {'penalty': ['l1', 'l2'], 'C': np.logspace(-4, 4, 9)}
+        grid_values = {'C': np.logspace(-4, 4, 9)}
 
         # Define algorithm
-        lr = LogisticRegression(random_state = 1)
+        lr = LogisticRegression(penalty = 'l2', random_state = 1)
         
         # Iterate through hyperparameter combinations
         for params in ParameterGrid(grid_values):
@@ -369,6 +369,7 @@ if __name__ == '__main__':
         ml_launcher.trainLinRModels(df_train, df_test, target, project_name, job_type = 'hyperparameter_tuning_lr')
         ml_launcher.trainRfRModels(df_train, df_test, target, project_name, job_type = 'hyperparameter_tuning_rf')
         ml_launcher.trainXgbRModels(df_train, df_test, target, project_name, job_type = 'hyperparameter_tuning_xgb')
+    
     
     
     
