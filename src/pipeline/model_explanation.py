@@ -52,7 +52,12 @@ if __name__ == '__main__':
     data_path_test = conf['data_path']['model_input'] + '/test.csv'
     
     # Other required inputs
-    target = conf['problem']['classification']['target']
+    if conf['problem']['classification']['tag'] == True:
+        target = conf['problem']['classification']['target']
+        
+    if conf['problem']['regression']['tag'] == True:
+        target = conf['problem']['regression']['target']
+        
     model_path = conf['other_directories']['model'] + '/model.pkl'
 
     # Get data
@@ -63,6 +68,9 @@ if __name__ == '__main__':
         loaded_model = pickle.load(file)
     
     # Get model explanation
-    exp_launcher.explainModel(loaded_model, df_test, target)
+    try:
+        exp_launcher.explainModel(loaded_model, df_test, target)
+    except:
+        print("FAILED: Explainer dashboard is not available for this model type. Please select a different model")
     
     

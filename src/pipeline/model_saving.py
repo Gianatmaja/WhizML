@@ -18,8 +18,9 @@ import pickle
 # Import required classes
 from pathlib import Path
 from datetime import datetime
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from xgboost import XGBClassifier, XGBRegressor
+from sklearn.linear_model import LogisticRegression, Ridge
 
 from eda import AutoEDA
 
@@ -43,13 +44,30 @@ class ModelSaving:
         X = df.drop(target, axis = 1)
     
         # Train best model with full training data
-        if config['model_name'] == 'Random Forest':
-            best = RandomForestClassifier(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
-            best.fit(X, y)
+        if conf['problem']['classification']['tag'] == True:
+            
+            if config['model_name'] == 'Random Forest':
+                best = RandomForestClassifier(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
+                best.fit(X, y)
+            elif config['model_name'] == 'XGBoost':
+                best = XGBClassifier(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
+                best.fit(X, y)
+            else:
+                best = LogisticRegression(penalty = config['penalty'], C = config['C'], random_state = 1)
+                best.fit(X, y)
+                
         else:
-            best = XGBClassifier(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
-            best.fit(X, y)
-
+            
+            if config['model_name'] == 'Random Forest':
+                best = RandomForestRegressor(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
+                best.fit(X, y)
+            elif config['model_name'] == 'XGBoost':
+                best = XGBRegressor(max_depth = config['max_depth'], n_estimators = config['n_estimators'], random_state = 1)
+                best.fit(X, y)
+            else:
+                best = Ridge(C = config['C'], random_state = 1)
+                best.fit(X, y)
+                
         return best
 
 
@@ -66,7 +84,11 @@ if __name__ == '__main__':
     data_path_train = conf['data_path']['model_input'] + '/train.csv'
     
     # Other required inputs
-    target = conf['problem']['classification']['target']
+    if conf['problem']['classification']['tag'] == True:
+        target = conf['problem']['classification']['target']
+        
+    if conf['problem']['regression']['tag'] == True:
+        target = conf['problem']['regression']['target']
     model_url = conf['wandb']['best_model_url']
     model_path = conf['other_directories']['model'] + '/model.pkl'
     
@@ -82,6 +104,7 @@ if __name__ == '__main__':
     current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
     
     print(current_time_str, '\033[93mSTATUS\033[0m - Model saved to data/model/ directory.')
+    
     
     
     
