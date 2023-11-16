@@ -18,6 +18,7 @@ import pickle
 # Import required classes
 from pathlib import Path
 from explainerdashboard import ClassifierExplainer, ExplainerDashboard
+from datetime import datetime
 
 from eda import AutoEDA
 
@@ -70,7 +71,12 @@ if __name__ == '__main__':
     # Get model explanation
     try:
         exp_launcher.explainModel(loaded_model, df_test, target)
+        
     except:
-        print("FAILED: Explainer dashboard is not available for this model type. Please select a different model")
-    
+        # Print status for user
+        current_time = datetime.now()
+        current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
+        
+        print(current_time_str, '\033[93mSTATUS\033[0m - FAILED: Explainer dashboard is not available for this model type. Please select a different model.')
+
     
