@@ -29,7 +29,7 @@ from eda import AutoEDA
 class ModelSaving:
     
     # Define saveModel function
-    def saveModel(self, df, target, model_url):
+    def saveModel(self, df_train, df_test, target, model_url):
         # This model will obtain the chosen model's configurations from Weights & Biases,
         # and will proceed to train that model on the full training dataset.
         
@@ -40,8 +40,8 @@ class ModelSaving:
         config = run.config
     
         # Get X and y
-        y = df[target]
-        X = df.drop(target, axis = 1)
+        y = df_train[target]
+        X = df_train.drop(target, axis = 1)
     
         # Train best model with full training data
         if conf['problem']['classification']['tag'] == True:
@@ -68,7 +68,15 @@ class ModelSaving:
                 best = Ridge(C = config['C'], random_state = 1)
                 best.fit(X, y)
                 
-        return best
+        # Get predictions
+        y_test = df_test[target]
+        X_test = df_test.drop(target, axis = 1)
+        
+        preds = best.predict(X_test)
+        X_test['True'] = y_test
+        X_test['Predicted'] = preds
+        
+        return best, X_test
 
 
 if __name__ == '__main__':
@@ -82,6 +90,7 @@ if __name__ == '__main__':
     
     # Read in dataset
     data_path_train = conf['data_path']['model_input'] + '/train.csv'
+    data_path_test = conf['data_path']['model_input'] + '/test.csv'
     
     # Other required inputs
     if conf['problem']['classification']['tag'] == True:
@@ -94,9 +103,10 @@ if __name__ == '__main__':
     
     # Get data
     df_train = prep_launcher.getData(data_path_train)
+    df_test = prep_launcher.getData(data_path_test)
     
     # Get model
-    best_model = model_launcher.saveModel(df_train, target, model_url)
+    best_model, predictions = model_launcher.saveModel(df_train, df_test, target, model_url)
     pickle.dump(best_model, open(model_path, 'wb'))
     
     # Print status for user
@@ -105,6 +115,14 @@ if __name__ == '__main__':
     
     print(current_time_str, '\033[93mSTATUS\033[0m - Model saved to data/model/ directory.')
     
+    # Save predictions
+    preds_path = conf['other_directories']['predictions'] + '/preds.csv'
+    predictions.to_csv(preds_path, index = False)
     
+    # Print status for user
+    current_time = datetime.now()
+    current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
+    
+    print(current_time_str, '\033[93mSTATUS\033[0m - Predictions saved to data/model_output/ directory.')
     
     
