@@ -33,24 +33,6 @@ problem:
     tag:
   exclude:
 preprocessing:
-  split_first:
-  drop:
-  impute_mean:
-  impute_median:
-  impute_mode:
-  impute_new:
-    col:
-    new_val:
-  drop_others:
-  cat_vars:
-    vars:
-    lab_encode:
-    one_encode:
-  num_vars:
-    vars:
-    scale:
-      required:
-      scaler:
   exclude:
 wandb:
   user:
