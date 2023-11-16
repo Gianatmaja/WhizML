@@ -24,11 +24,17 @@ from eda import AutoEDA
 class BiasDataPrep:
     
     # Define the prepareDataset function
-    def prepareDataset(df, target):
+    def prepareDataset(self, df):
         # This function will prepare a dataset that can be used to analyse and detect
         # potential biases in the chosen model. It makes use of the Aequitas web app.
         
-        pass
+        new_order = ['Predicted', 'True'] + [col for col in df.columns if col != 'True' and col != 'Predicted']
+        df = df[new_order]
+        
+        new_names = ['score', 'label_value'] + [col for col in df.columns if col != 'True' and col != 'Predicted']
+        df.columns = new_names
+        
+        return df
     
 if __name__ == '__main__':
     
@@ -39,10 +45,23 @@ if __name__ == '__main__':
     # Read config file
     conf = yaml.safe_load(Path('config.yml').read_text())
     
+    # Required configs
+    data_path = conf['other_directories']['predictions'] + '/preds.csv'
+    output_path = conf['other_directories']['reporting'] + '/output.csv'
+    
+    # Get data
+    df = prep_launcher.getData(data_path)
+    
     # Run the process for binary classification only
     if conf['problem']['classification']['binary'] == True:
-        pass
+        df_out = bias_data_launcher.prepareDataset(df)
+        df_out.to_csv(output_path, index = False)
+        
+        # Print status for user
+        current_time = datetime.now()
+        current_time_str = current_time.strftime('%Y-%m-%d %H:%M:%S')
+        
+        print(current_time_str, '\033[93mSTATUS\033[0m - Data saved to data/reporting/ directory.')
     
     else:
         print('Bias analysis is only available for binary classification problems.')
-        
