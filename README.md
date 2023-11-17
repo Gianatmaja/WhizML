@@ -85,9 +85,14 @@ To use WhizML in your data science project, perform the following steps:
 curl -LJO https://https://github.com/Gianatmaja/WhizML/archive/vX.Y.Z.zip
 ```
 
-2. Place your raw data file in the `data/raw/` directory, and fill-in the `config.yml` file.
+2. To install the requirements, run the following command:
 
-3. Run the `eda` pipeline to determine the required data-preprocessing.
+```bash
+pip install -r requirements.txt
+```
+3. Place your raw data file in the `data/raw/` directory, and fill-in the `config.yml` file.
+
+4. Run the `eda` pipeline to determine the required data-preprocessing.
 
 ```YAML
 task:
@@ -99,11 +104,11 @@ task:
   data_drift_analysis:
 ```
 
-4. Develop the requried data-preprocessing steps to obtain the train and test set data.
+5. Develop the requried data-preprocessing steps to obtain the train and test set data.
 
-5. Run the `model_experimentation` pipeline and determine the best model.
+6. Run the `model_experimentation` pipeline and determine the best model.
 
-6. Paste the run url (from Wandb) of the best model to the `config.yml` file.
+7. Paste the run url (from Wandb) of the best model to the `config.yml` file.
 
 ```YAML
 task:
@@ -113,7 +118,7 @@ wandb:
   best_model_url: <Best Run URL from Wandb>
 ```
 
-7. Run the rest of the pipelines as needed.
+8. Run the rest of the pipelines as needed.
 
 ```bash
 python main.py
