@@ -4,7 +4,6 @@ A reusable codebase for fast data science and machine learning experimentation,
 integrating various open-source tools to support automatic EDA, ML models experimentation
 and tracking, model inference, model explainability, bias, and data drift analysis.
 
-
 ## Quick Examples
 
 Take a look at these repositories below for a quick overview of how WhizML can
@@ -49,7 +48,7 @@ The structure of this repository is as follows:
     ├── requirements.txt                        # Requirements file
     └── config.yml                              # Config
 
-The main codes are in the `main.py` and `pipeline` directory, which will be explained in more details in the
+The main codes are in the `main.py` and `pipeline/` directory, which will be explained in more details in the
 next section.
 
 ## Pipelines
@@ -80,6 +79,46 @@ Furthermore, users can also add additional pipelines to serve their respective n
 ## Using WhizML in Your Data Science Project
 To use WhizML in your data science project, perform the following steps:
 
+1. Download the repository according to the desired release (vX.Y.Z), either through the GUI or command line:
+
+```bash
+curl -LJO https://https://github.com/Gianatmaja/WhizML/archive/vX.Y.Z.zip
+```
+
+2. Place your raw data file in the `data/raw/` directory, and fill-in the `config.yml` file.
+
+3. Run the `eda` pipeline to determine the required data-preprocessing.
+
+```YAML
+task:
+  eda: True
+  model_experimentation: 
+  model_finalization:
+  model_explainability:
+  bias_analysis_data_prep:
+  data_drift_analysis:
+```
+
+4. Develop the requried data-preprocessing steps to obtain the train and test set data.
+
+5. Run the `model_experimentation` pipeline and determine the best model.
+
+6. Paste the run url (from Wandb) of the best model to the `config.yml` file.
+
+```YAML
+task:
+wandb:
+  user:
+  project:
+  best_model_url:
+```
+
+7. Run the rest of the pipelines as needed.
+
+```bash
+python main.py
+```
+
 
 ## What's Next?
 WhizML will continuously be improved to serve data science use cases better. Some features planned for the next
@@ -87,4 +126,5 @@ releases include:
 - More comprehensive artefacts logging in Weights & Biases
 - Starter codes for data preprocessing & model inference pipelines
 - Support for clustering
-- Pipeline testing
+- Support for pipeline testing
+- Support for different dataset formats
