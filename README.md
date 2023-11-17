@@ -81,7 +81,7 @@ To use WhizML in your data science project, perform the following steps:
 
 1. Download the repository according to the desired release.
 
-2. To install the requirements, run the following command:
+2. To install the requirements, run the following command.
 
 ```bash
 pip install -r requirements.txt
