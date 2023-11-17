@@ -86,4 +86,4 @@ wandb:
   best_model_url: 
 ```
 
-In the example above, the model experimentation results will be stored inside the `Test_project` project, in the Wandb account of user `azi776`.
+In the example above, the model experimentation results will be stored inside the `Test_project` project, in the Wandb account of user `azx776`.
