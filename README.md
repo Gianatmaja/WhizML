@@ -57,5 +57,6 @@ To use WhizML in your data science project, perform the following steps:
 WhizML will continuously be improved to serve data science use cases better. Some features planned for the next
 releases include:
 - More comprehensive artefacts logging in Wandb
-- Starter codes for data preprocessing
+- Starter codes for data preprocessing & model inference pipelines
 - Support for clustering
+- Pipeline testing
