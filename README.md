@@ -28,28 +28,29 @@ The complete set of requirements can be found in the `requirements.txt` file.
 The structure of this repository is as follows:
 
     .
-    ├── data/  
-    │  ├── raw/                            
-    │  ├── clean/    
-    │  ├── model_input/
-    │  ├── model/
-    │  ├── model_output/          
-    │  ├── reporting/                    
+    ├── data/                                   # Data folder
+    │  ├── raw/                                 # Raw dataset      
+    │  ├── clean/                               # Preprocessed dataset
+    │  ├── model_input/                         # Train & test datasets
+    │  ├── model/                               # Model files
+    │  ├── model_output/                        # Predictions
+    │  ├── reporting/                           # Drift, explainers, bias data, etc.
     ├── notebooks/
     ├── src/
-    │   ├── pipeline/
-    │   │  ├── eda.py
-    │   │  ├── model_experimentation.py
-    │   │  ├── model_explanation.py
-    │   │  ├── model_saving.py
-    │   │  ├── bias_analysis_data_prep.py
-    │   │  ├── data_drift.py
+    │   ├── pipeline/                           # Pipeline codes
+    │   │  ├── eda.py                           # Auto EDA
+    │   │  ├── model_experimentation.py         # Model experiments
+    │   │  ├── model_explanation.py             # Model explainer
+    │   │  ├── model_saving.py                  # Model saving
+    │   │  ├── bias_analysis_data_prep.py       # Bias data preparation
+    │   │  ├── data_drift.py                    # Data drift detection
     │   ├── tests/
-    ├── main.py    
-    ├── requirements.txt
-    └── config.yml
+    ├── main.py                                 # Main runner code
+    ├── requirements.txt                        # Requirements file
+    └── config.yml                              # Config
 
-The main codes 
+The main codes are in the `main.py` and `pipeline` directory, which will be explained in more details in the
+next section.
 
 ## Pipelines
 
