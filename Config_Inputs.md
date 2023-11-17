@@ -1,7 +1,9 @@
 # WhizML Config Inputs
 This markdown will detail the inputs needed for each configuration in the `config.yml` file.
 
-For more examples, refer to the 2 use cases linked in the WhizML Readme.
+For more examples, refer to the 2 use cases mentioned in the WhizML Readme, also linked below.
+- [WhizML on CVD Analysis Use Case](https://github.com/Gianatmaja/WhizML-CVD_Analysis/tree/main)
+- [WhizML on Walmart Sales Analysis Use Case](https://github.com/Gianatmaja/WhizML-Walmart_Sales/tree/main)
 
 ## task
 The first section of the `config.yml` file, `task`, can be filled with Boolean values, or left blank.
