@@ -72,7 +72,7 @@ potential model bias, using the [Aequitas web app](http://aequitas.dssg.io/).
 the two datasets, using the Python library, EvidentlyAI.
 
 Users can configure each pipeline to serve their data science problem through the `config.yml` file. For more 
-information regarding the configurations, refer to this markdown.
+information regarding the configurations, refer to [this markdown](https://github.com/Gianatmaja/WhizML/blob/main/Config_Inputs.md).
 
 Furthermore, users can also add additional pipelines to serve their respective needs better.
 
