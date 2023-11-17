@@ -24,6 +24,33 @@ Some of the main open-source tools used in developing this codebase include:
 
 The complete set of requirements can be found in the `requirements.txt` file.
 
+## Codebase Structure
+The structure of this repository is as follows:
+
+    .
+    ├── data/  
+    │  ├── raw/                            
+    │  ├── clean/    
+    │  ├── model_input/
+    │  ├── model/
+    │  ├── model_output/          
+    │  ├── reporting/                    
+    ├── notebooks/
+    ├── src/
+    │   ├── pipeline/
+    │   │  ├── eda.py
+    │   │  ├── model_experimentation.py
+    │   │  ├── model_explanation.py
+    │   │  ├── model_saving.py
+    │   │  ├── bias_analysis_data_prep.py
+    │   │  ├── data_drift.py
+    │   ├── tests/
+    ├── main.py    
+    ├── requirements.txt
+    └── config.yml
+
+The main codes 
+
 ## Pipelines
 
 There are 6 main pipelines in the codebase, namely:
