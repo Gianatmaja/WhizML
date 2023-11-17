@@ -9,7 +9,8 @@ and tracking, model inference, model explainability, bias, and data drift analys
 
 Take a look at these repositories below for a quick overview of how WhizML can
 help streamline initial data science and machine learning development.
-
+- [WhizML on CVD Analysis Use Case](https://github.com/Gianatmaja/WhizML-CVD_Analysis/tree/main)
+- [WhizML on Walmart Sales Analysis Use Case](https://github.com/Gianatmaja/WhizML-Walmart_Sales/tree/main)
 
 ## Tech Stack
 
