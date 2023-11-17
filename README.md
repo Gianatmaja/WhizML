@@ -25,7 +25,36 @@ The complete set of requirements can be found in the `requirements.txt` file.
 
 ## Pipelines
 
+There are 6 main pipelines in the codebase, namely:
+
+- EDA: This pipeline will launch an auto-EDA dashboard, powered by the Python library D-Tale, allowing users
+to get a sense of what their data looks like, as well as observe statistical attributes of each columns.
+- Model Experimentation: This pipeline will trigger the model training phase, training several configurations
+of Linear Regression, Logistic Regression, Random Forest, and XGBoost models, depending on the problem. Users
+will be able to observe the results through the Wandb platform. (Note: Users would need to implement their own
+data preprocessing pipeline to return 2 csv files, train.csv and test.csv, as input to the model experimentation
+pipeline.)
+- Model Finalization: This pipeline will train the best model configuration (from the model experimentation phase)
+and save the model as a pickle file.
+- Model Explainability: This pipeline will launch an model explainer dashboard, which can be interacted with by
+the users.
+- Bias Analysis Data Prep: This pipeline will prepare a .csv file, which can be used by the users to analyse
+potential model bias, using the [Aequitas web app](http://aequitas.dssg.io/).
+- Data Drift Analysis: This pipeline will take as input 2 data files, and check if there is any drift between
+the two datasets, using the Python library, EvidentlyAI.
+
+Users can configure each pipeline to serve their data science problem through the `config.yml` file. For more 
+information regarding the configurations, refer to this markdown.
+
+Furthermore, users can also add additional pipelines to serve their respective needs better.
 
 ## Using WhizML in Your Data Science Project
+To use WhizML in your data science project, perform the following steps:
+
 
 ## What's Next?
+WhizML will continuously be improved to serve data science use cases better. Some features planned for the next
+releases include:
+- More comprehensive artefacts logging in Wandb
+- Starter codes for data preprocessing
+- Support for clustering
