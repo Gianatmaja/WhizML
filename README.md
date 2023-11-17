@@ -79,11 +79,7 @@ Furthermore, users can also add additional pipelines to serve their respective n
 ## Using WhizML in Your Data Science Project
 To use WhizML in your data science project, perform the following steps:
 
-1. Download the repository according to the desired release (vX.Y.Z), either through the GUI or command line:
-
-```bash
-curl -LJO https://https://github.com/Gianatmaja/WhizML/archive/vX.Y.Z.zip
-```
+1. Download the repository according to the desired release (vX.Y.Z).
 
 2. To install the requirements, run the following command:
 
