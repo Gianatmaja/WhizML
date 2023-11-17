@@ -81,7 +81,7 @@ Here, the wandb-related configurations are provided.
 
 ```YAML
 wandb:
-  user: azi776
+  user: azx776
   project: Test_project
   best_model_url: 
 ```
