@@ -26,11 +26,8 @@ from eda import AutoEDA
 class DriftDetector:
 
     # Define detectDrift function
-    def detectDrift(self, data1, data2, to_drop, report_dir):
+    def detectDrift(self, data1, data2, report_dir):
         # This function will compare 2 datasets to check for data drift
-        
-        data1.drop(to_drop, axis = 1, inplace = True)
-        data2.drop(to_drop, axis = 1, inplace = True)
         
         # Define report
         report = Report(metrics = [
@@ -67,7 +64,6 @@ if __name__ == '__main__':
     data_path_2 = conf['data_path']['additional_data2']
     
     # Other required inputs
-    to_drop = conf['preprocessing']['drop']
     report_dir = conf['other_directories']['reporting']
 
     # Get data
@@ -75,7 +71,7 @@ if __name__ == '__main__':
     df2 = prep_launcher.getData(data_path_2)
     
     # Detect for drift
-    drift_launcher.detectDrift(df1, df2, to_drop, report_dir)
+    drift_launcher.detectDrift(df1, df2, report_dir)
     
     # Print status for user
     current_time = datetime.now()
