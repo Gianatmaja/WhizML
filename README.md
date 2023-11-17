@@ -13,7 +13,18 @@ help streamline initial data science and machine learning development.
 
 ## Tech Stack
 
-## Pipeline
+Some of the main open-source tools used in developing this codebase include:
+
+- [Scikit-Learn](https://scikit-learn.org/stable/): Used for ML model training.
+- [D-Tale](https://pypi.org/project/dtale/): Used for automating the EDA process.
+- [Weights & Biases](https://docs.wandb.ai/): Used for experiment tracking and ML model management.
+- [Explainer-Dashboard](https://explainerdashboard.readthedocs.io/en/latest/): Used for model explainabillity.
+- [EvidentlyAI](https://www.evidentlyai.com/): Used for identifying data drift.
+
+The complete set of requirements can be found in the `requirements.txt` file.
+
+## Pipelines
+
 
 ## Using WhizML in Your Data Science Project
 

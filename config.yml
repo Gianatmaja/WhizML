@@ -1,9 +1,7 @@
 task:
   eda: 
-  data_preprocessing: 
   model_experimentation: 
   model_finalization:
-  model_inference:
   model_explainability:
   bias_analysis_data_prep:
   data_drift_analysis:
@@ -38,6 +36,3 @@ wandb:
   user:
   project:
   best_model_url:
-
-  
-
