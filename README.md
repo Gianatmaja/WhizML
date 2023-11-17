@@ -108,9 +108,9 @@ task:
 ```YAML
 task:
 wandb:
-  user:
-  project:
-  best_model_url:
+  user: <Wandb Username>
+  project: <Wandb Project Name>
+  best_model_url: <Best Run URL from Wandb>
 ```
 
 7. Run the rest of the pipelines as needed.
